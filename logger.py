@@ -16,8 +16,6 @@ def insertMongo(connstr, coll, message):
 class failureAction(Action):
 
     def run(self, monitor, service, rule, runner):
-        print service.state
-        print rule.server
         print "fail %s" % (str(service.name))
         if service.state:
             message = {'name': str(service.name),
@@ -31,8 +29,6 @@ class failureAction(Action):
 class successAction(Action):
 
     def run(self, monitor, service, rule, runner):
-        print service.state
-        print rule.server
         print "success %s" % (str(service.name))
         if not service.state:
             message = {'name': str(service.name),
